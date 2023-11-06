@@ -1,25 +1,30 @@
 package com.bnta.chocolate.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CollectionId;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
-
+@Entity
+@Table
 public class Estate {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @Column(name = "name")
     private String name;
 
-
+    @Column(name = "country")
     private String country;
 
-
+    @ManyToOne
+    @JoinColumn(name = "chocolate_id")
+    @JsonIgnoreProperties({"Estate"})
     private List<Chocolate> chocolates;
 
     public Estate(String name, String country) {
