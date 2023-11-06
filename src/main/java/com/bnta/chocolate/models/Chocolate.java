@@ -6,11 +6,12 @@ import javax.persistence.*;
 
 
 @Entity
-@Table
+@Table (name = "chocolates")
 public class Chocolate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
     @Column(name = "name")
@@ -18,8 +19,9 @@ public class Chocolate {
     @Column(name = "cocoa_percentage")
     private int cocoaPercentage;
 
-    @OneToMany(mappedBy = "chocolate")
-    @JsonIgnoreProperties({"chocolate"})
+    @ManyToOne
+    @JoinColumn(name = "estate_id")
+    // @JsonIgnoreProperties({"chocolate"}) not needed on both tables bc it works on both.
     private Estate estate;
 
     public Chocolate(String name, int cocoaPercentage, Estate estate) {

@@ -9,11 +9,12 @@ import java.util.List;
 
 
 @Entity
-@Table
+@Table(name = "estates")
 public class Estate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
     @Column(name = "name")
@@ -22,8 +23,7 @@ public class Estate {
     @Column(name = "country")
     private String country;
 
-    @ManyToOne
-    @JoinColumn(name = "chocolate_id")
+    @OneToMany(mappedBy = "estate")
     @JsonIgnoreProperties({"Estate"})
     private List<Chocolate> chocolates;
 
