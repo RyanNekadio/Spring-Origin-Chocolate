@@ -21,7 +21,9 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run (ApplicationArguments args){
         Estate r3Bnta = new Estate("Room 3 BNTA", "UK");
-           estateRepository.save(r3Bnta);           //have to create estate before saving the chocolate.
+        estateRepository.save(r3Bnta);
+
+        //have to create estate before saving the chocolate.
         Chocolate chocolate = new Chocolate("Bounty", 20, r3Bnta);
         chocolateRepository.save(chocolate);
 
