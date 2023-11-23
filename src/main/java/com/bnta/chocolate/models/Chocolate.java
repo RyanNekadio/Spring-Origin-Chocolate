@@ -21,7 +21,7 @@ public class Chocolate {
 
     @ManyToOne
     @JoinColumn(name = "estate_id")
-    // @JsonIgnoreProperties({"chocolate"}) not needed on both tables bc it works on both.
+     @JsonIgnoreProperties({"chocolates"})
     private Estate estate;
 
     public Chocolate(String name, int cocoaPercentage, Estate estate) {
